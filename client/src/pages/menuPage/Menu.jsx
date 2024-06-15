@@ -96,7 +96,7 @@ const Menu = () => {
           </div>
           {/* Text */}
           <div className='md:w-1/2 space-y-7 px-4'>
-            <div className='  rounded-3xl shadow-xl  p-8 px-10 bg-simpleLightYellow'>
+            <div className='  rounded-3xl shadow-xl  p-8 px-10 bg-white'>
               
               <p className='text-gray-600 mt-4'>
              <span className=' text-2xl'>"</span> <span className=' text-lg'>Welcome to ThreeSisters, your premier dessert culinary destination in New Delhi! Delight in our enticing menu curated by our talented Head Chef, offering a symphony of flavors to tantalize your taste buds. With our user-friendly interface, you can effortlessly browse, sort, and add delectable dishes to your cart for a seamless online ordering experience. Embark on a culinary journey and indulge in the exquisite flavors right at your fingertips at ThreeSisters</span> <span className='text-2xl'>"</span>
@@ -122,49 +122,49 @@ const Menu = () => {
           <div className=''>
             <button
               onClick={showAll}
-              className={`w-24 mr-2 px-4 bg-yellow-200 text-slate-700 py-2 rounded-full shadow-2xl hover:shadow-none hover:bg-green-600 transition-all duration-300 ${selectedCategory === 'all' ? 'bg-yellow-300  text-black' : ''
+              className={`w-24 mr-2 px-4 bg-baby-pink text-white py-2 rounded-full shadow-2xl hover:shadow-none hover:bg-green-600 transition-all duration-300 ${selectedCategory === 'all' ? 'bg-baby-pink  text-white' : ''
                 }`}
             >
               All
             </button>
             <button
               onClick={() => filterItems('rice')}
-              className={`w-24 mr-2 bg-yellow-200 text-slate-700  px-4 py-2 rounded-full shadow-xl hover:shadow-none hover:bg-green-600 transition-all duration-300 ${selectedCategory === 'rice' ? 'bg-yellow-300  text-black' : ''
+              className={`w-24 mr-2 bg-baby-pink text-white  px-4 py-2 rounded-full shadow-xl hover:shadow-none hover:bg-green-600 transition-all duration-300 ${selectedCategory === 'rice' ? 'bg-baby-pink    text-white' : ''
                 }`}
             >
               Rice
             </button>
             <button
               onClick={() => filterItems('kottu')}
-              className={`w-24 mr-2 px-4 bg-yellow-200 text-slate-700  py-2 rounded-full shadow-xl hover:shadow-none hover:bg-green-600 transition-all duration-300 ${selectedCategory === 'kottu' ? 'bg-yellow-300  text-black' : ''
+              className={`w-24 mr-2 px-4 bg-baby-pink text-white  py-2 rounded-full shadow-xl hover:shadow-none hover:bg-green-600 transition-all duration-300 ${selectedCategory === 'kottu' ? 'bg-baby-pink   text-white' : ''
                 }`}
             >
               Kottu
             </button>
             <button
               onClick={() => filterItems('burger')}
-              className={`w-24 mr-2 px-4 bg-yellow-200 text-slate-700  py-2 rounded-full shadow-xl hover:shadow-none hover:bg-green-600 transition-all duration-300 ${selectedCategory === 'burger' ? 'bg-yellow-300  text-black' : ''
+              className={`w-24 mr-2 px-4 bg-baby-pink text-white  py-2 rounded-full shadow-xl hover:shadow-none hover:bg-green-600 transition-all duration-300 ${selectedCategory === 'burger' ? 'bg-baby-pink   text-white' : ''
                 }`}
             >
               Burger
             </button>
             <button
               onClick={() => filterItems('noodles')}
-              className={`w-24 mr-2 px-4 bg-yellow-200 text-slate-700 py-2 rounded-full shadow-xl hover:shadow-none hover:bg-green-600 transition-all duration-300 ${selectedCategory === 'noodles' ? 'bg-yellow-300  text-black' : ''
+              className={`w-24 mr-2 px-4 bg-baby-pink text-white py-2 rounded-full shadow-xl hover:shadow-none hover:bg-green-600 transition-all duration-300 ${selectedCategory === 'noodles' ? 'bg-baby-pink text-white' : ''
                 }`}
             >
               Noodles
             </button>
             <button
               onClick={() => filterItems('dessert')}
-              className={`w-24 mr-2 px-4 bg-yellow-200 text-slate-600  py-2 rounded-full shadow-xl hover:shadow-none hover:bg-green-600 transition-all duration-300 ${selectedCategory === 'dessert' ? 'bg-yellow-300  text-black' : ''
+              className={`w-24 mr-2 px-4 bg-baby-pink text-white  py-2 rounded-full shadow-xl hover:shadow-none hover:bg-green-600 transition-all duration-300 ${selectedCategory === 'dessert' ? 'bg-baby-pink   text-white' : ''
                 }`}
             >
               Desserts
             </button>
             <button
               onClick={() => filterItems('drinks')}
-              className={`w-24 mr-2 px-4 bg-yellow-200 text-slate-600  py-2 rounded-full shadow-xl hover:shadow-none hover:bg-green-600 transition-all duration-300 ${selectedCategory === 'drinks' ? 'bg-yellow-300  text-black' : ''
+              className={`w-24 mr-2 px-4 bg-baby-pink text-white  py-2 rounded-full shadow-xl hover:shadow-none hover:bg-green-600 transition-all duration-300 ${selectedCategory === 'drinks' ? 'bg-baby-pink   text-white' : ''
                 }`}
             >
               Drinks
@@ -175,7 +175,7 @@ const Menu = () => {
           <div className="relative">
             <select
               onChange={(e) => handleSortChange(e.target.value)}
-              className="appearance-none text-black px-7 py-2 rounded-full shadow-xl  transition-all duration-300   bg-yellow-300  bordor-none focus:outline-none  focus:border-transparent "
+              className="appearance-none text-black px-7 py-2 rounded-full shadow-xl  transition-all duration-300   bg-baby-pink  bordor-none focus:outline-none  focus:border-transparent "
             >
               <option value="default" disabled selected >
                 Sort by

@@ -126,7 +126,7 @@ const handleSubmit = async (event) => {
                 <div className='md:w-1/2 space-y-6'>
                     <div className='bg-white shadow-lg rounded-lg p-6'>
                         <h4 className='text-xl text-gray-800 font-semibold'>Order Summary</h4>
-                        <p className='mt-4 text-gray-600'>Total Price: <span className='font-semibold'>Rs.{price}</span></p>
+                        <p className='mt-4 text-gray-600'>Total Price: <span className='font-semibold'>₹{price}</span></p>
                         <p className='text-gray-600'>Items: <span className='font-semibold'>{Array.isArray(cart) ? cart.length : 0}</span></p>
                     </div>
                 </div>

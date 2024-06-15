@@ -52,7 +52,7 @@ const ManageItems = () => {
             </tr>
           </thead>
           <tbody>
-            {menu.map((item, index) => (
+            {menu?.map((item, index) => (
               <tr key={index}>
                 <th>{index + 1}</th>
                 <td>

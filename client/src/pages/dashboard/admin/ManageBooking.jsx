@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const ManageBooking = () => {
-  const [bookingData, setBookingData] = useState([
-    // Your dummy booking data here
-  ]);
-
+  const [bookingData, setBookingData] = useState([]);
+  const [initialBookingData, setInitialBookingData] = useState([]);
   const [sortBy, setSortBy] = useState(null);
 
-  // Function to sort bookings based on a specified key
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:6001/bookings'); // Replace with your API endpoint
+        setBookingData(response.data);
+        setInitialBookingData(response.data);
+      } catch (error) {
+        console.error('Error fetching booking data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const sortBookings = (key) => {
     const sortedBookings = [...bookingData].sort((a, b) => {
       if (a[key] < b[key]) return -1;
@@ -18,31 +30,24 @@ const ManageBooking = () => {
     setBookingData(sortedBookings);
   };
 
-  // Function to filter bookings based on user name
   const filterBookings = (userName) => {
-    const filteredBookings = bookingData.filter(
-      (booking) => booking.userName.toLowerCase() === userName.toLowerCase()
+    const filteredBookings = initialBookingData.filter(
+      (booking) => booking.userName.toLowerCase().includes(userName.toLowerCase())
     );
 
     setBookingData(filteredBookings);
   };
 
-  // Function to reset bookings to the original state
   const resetBookings = () => {
-    // Reset booking data to the original state
-    // For example, fetch data from the server again
-    // or set it to a predefined dummy data array
+    setBookingData(initialBookingData);
   };
 
   return (
     <div className="w-full md:w-[900px] px-4 mx-auto">
       <div className="bg-stone-950 rounded-2xl mt-4 px-4 py-4">
-        {/* Header */}
         <h1 className="text-4xl font-bold text-center">Manage Bookings</h1>
 
-        {/* Filter and Sort Controls */}
         <div className="flex justify-between items-center mt-4">
-          {/* Sort Dropdown */}
           <div>
             <label htmlFor="sortBy" className="mr-2">
               Sort by:
@@ -57,15 +62,13 @@ const ManageBooking = () => {
               className="border border-gray-300 rounded-md p-1"
             >
               <option value="">None</option>
-              <option value="id">ID</option>
+              <option value="orderId">Order ID</option>
               <option value="userName">User Name</option>
               <option value="bookingDate">Booking Date</option>
-              <option value="time">Time</option>
-              <option value="tableNo">Table No</option>
+              <option value="amount">Amount</option>
             </select>
           </div>
 
-          {/* Filter Input */}
           <div>
             <label htmlFor="filterInput" className="mr-2">
               Filter by user name:
@@ -79,7 +82,6 @@ const ManageBooking = () => {
             />
           </div>
 
-          {/* Reset Button */}
           <button
             onClick={resetBookings}
             className="bg-yellow-300 hover:bg-yellow-400 text-slate-700 font-medium py-1 px-4 rounded-md"
@@ -88,26 +90,29 @@ const ManageBooking = () => {
           </button>
         </div>
 
-        {/* Booking Table */}
         <div className="overflow-x-auto mt-6">
           <table className="border border-gray-300 w-full rounded-md">
             <thead className="bg-yellow-300 text-slate-700">
               <tr>
-                <th className="py-3 px-6 text-left">ID</th>
+                <th className="py-3 px-6 text-left">Order ID</th>
                 <th className="py-3 px-6 text-left">User Name</th>
                 <th className="py-3 px-6 text-left">Booking Date</th>
-                <th className="py-3 px-6 text-left">Time</th>
-                <th className="py-3 px-6 text-left">Table No</th>
+                <th className="py-3 px-6 text-left">Items</th>
+                <th className="py-3 px-6 text-left">Amount</th>
               </tr>
             </thead>
             <tbody>
               {bookingData.map((booking) => (
-                <tr key={booking.id} className="bg-stone-950">
-                  <td className="py-3 px-6">{booking.id}</td>
+                <tr key={booking._id} className="bg-stone-950">
+                  <td className="py-3 px-6">{booking.orderId}</td>
                   <td className="py-3 px-6">{booking.userName}</td>
-                  <td className="py-3 px-6">{booking.bookingDate}</td>
-                  <td className="py-3 px-6">{booking.time}</td>
-                  <td className="py-3 px-6">{booking.tableNo}</td>
+                  <td className="py-3 px-6">{new Date(booking.bookingDate).toLocaleDateString()}</td>
+                  <td className="py-3 px-6">
+                    {booking.items.map((item, index) => (
+                      <div key={index}>{item.itemName} (x{item.quantity})</div>
+                    ))}
+                  </td>
+                  <td className="py-3 px-6">{booking.amount}</td>
                 </tr>
               ))}
             </tbody>

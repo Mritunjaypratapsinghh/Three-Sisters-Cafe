@@ -74,7 +74,7 @@ const Cards = ({ item }) => {
         <p className=" mt-2  text-xs text-gray-500  h-20 overflow-hidden">{recipe}</p>
         <div className="flex items-center justify-between ">
           <div className="flex items-center">
-          <button className="bg-yellow-300 hover:bg-mYyellow text-black font-bold py-1 px-3 rounded-full mt-2" onClick={() => handleAddToCart(item)}>
+          <button className="bg-baby-pink hover:bg-baby-pink text-white font-bold py-1 px-3 rounded-full mt-2" onClick={() => handleAddToCart(item)}>
           Add to Cart
         </button>
           </div>
