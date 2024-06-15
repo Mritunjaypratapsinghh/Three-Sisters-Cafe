@@ -3,7 +3,7 @@ import React from 'react'
 
 
 const axiosPublic =  axios.create({
-    baseURL: 'http://localhost:6001',
+    baseURL: 'https://three-sisters-cafe-1.onrender.com',
   })
 
 const useAxiosPublic = () => {

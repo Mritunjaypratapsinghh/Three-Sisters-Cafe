@@ -6,7 +6,13 @@ const Banner = () => {
       <div className='py-30 flex flex-col md:flex-row-reverse justify-between items-center gap-6'>
         {/* small cards */}
         <div className='md:w-2/5  '>
-          <img src='/banner9.png' alt='banner' className='w-full h-[800px]' />
+
+
+
+
+        <img src='/burgercolddrink.png' alt='banner' className='w-full' style={{ height: `${900}px` }} />
+
+
           <div className='flex flex-col md:flex-row items-center justify-around -mt-14 gap-4'>
             
             

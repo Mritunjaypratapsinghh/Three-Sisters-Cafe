@@ -23,7 +23,7 @@ const Cards = ({ item }) => {
   const handleAddToCart = () => {
     if (user && user.email) {
       const cartItem = { menuItemId: _id, name, quantity: 1, image, price, email: user.email };
-      axios.post('http://localhost:6001/carts', cartItem)
+      axios.post('https://three-sisters-cafe-1.onrender.com/carts', cartItem)
         .then((response) => {
           console.log(response);
           if (response) {
@@ -65,7 +65,7 @@ const Cards = ({ item }) => {
   };
 
   return (
-    <div className="bg-cardYellow rounded-lg shadow-2xl hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out">
+    <div className="bg-cardwhite rounded-lg shadow-2xl hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out">
     <div className="flex justify-center items-center">
       <img src={image} alt={name} className="w-[300px] mt-3 h-48 rounded-t-lg" />
     </div>
@@ -78,7 +78,7 @@ const Cards = ({ item }) => {
           Add to Cart
         </button>
           </div>
-          <p className=" text-base font-bold  text-orange-800 mr-2">Rs.{price}</p>
+          <p className=" text-base font-bold  text-orange-800 mr-2"> ₹{price}</p>
         </div>
         
       </div>

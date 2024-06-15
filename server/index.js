@@ -12,11 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 //connect to mongoDB config
-// mongoose.connect("mongodb+srv://hritikkk:q03q7uCiDN8rE9ZJ@cluster0.xueqaud.mongodb.net/MRKing-DB?retryWrites=true&w=majority")
-//     .then(() => console.log('MongoDB connected...'))
-//     .catch(err => console.error('MongoDB connection error:', err));
-
-mongoose.connect('mongodb+srv://hritikkk:q03q7uCiDN8rE9ZJ@cluster0.xueqaud.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.xueqaud.mongodb.net?retryWrites=true&w=majority`)
 .then(() => console.log('MongoDB connected...'))
 
   // jwt authentication
@@ -42,6 +38,7 @@ app.use('/payments', paymentRoutes);
 //stripe payment route
 app.post("/create-payment-intent", async (req, res) => {
   const { price } = req.body;
+  console.log(price);
   const amount = price * 100;
 
   // Create a PaymentIntent with the order amount and currency
@@ -63,7 +60,7 @@ app.post("/create-payment-intent", async (req, res) => {
 
 
 app.get("/", (req, res) => {
-  res.send("Hello Foodi Client Server!");
+  res.send("Hello Three Sisters Server!");
 });
 
 app.listen(port, () => {

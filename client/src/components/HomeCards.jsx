@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import useCart from "../hooks/useCart";
 import axios from 'axios';
 import Modal from "./Modal"
-
+import { FaChessKnight } from "react-icons/fa";
 const HomeCards = ({ item }) => {
   const { name, image, price, recipe, _id } = item;
   const { user } = useContext(AuthContext);
@@ -21,7 +21,7 @@ const HomeCards = ({ item }) => {
   const handleAddToCart = () => {
     if (user && user.email) {
       const cartItem = { menuItemId: _id, name, quantity: 1, image, price, email: user.email };
-      axios.post('http://localhost:6001/carts', cartItem)
+      axios.post('https://three-sisters-cafe-1.onrender.com/carts', cartItem)
         .then((response) => {
           console.log(response);
           if (response) {
@@ -63,13 +63,10 @@ const HomeCards = ({ item }) => {
   };
 
   return (
-    <div className="bg-cardYellow  rounded-lg overflow-hidden shadow-2xl max-w-xs mx-auto mb-6 mt-4">
-      <div className="relative">
-        <img
-          src={image}
-          alt={name}
-          className="w-full h-40 object-cover object-center"
-        />
+    <div className="bg-cardwhite rounded-lg overflow-hidden shadow-2xl max-w-xs mx-auto mb-6 mt-4">
+      <div className="flex justify-center items-center">
+      <img src={image} alt={name} className="w-[300px] mt-3 h-48 rounded-t-lg" />
+       
         <button
           onClick={handleHeartClick}
           className="absolute top-2 right-2 text-red-500"
