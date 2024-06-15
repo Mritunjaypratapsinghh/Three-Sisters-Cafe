@@ -5,7 +5,10 @@ const port = process.env.PORT || 6001;
 const mongoose = require("mongoose");
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
+const socketIo = require('socket.io');
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const bookingRoutes = require('./api/routes/bookingRoutes');
+
 
 // middleware
 app.use(cors());
@@ -34,6 +37,7 @@ app.use('/menu', menuRoutes)
 app.use('/carts', cartRoutes);
 app.use('/users', userRoutes);
 app.use('/payments', paymentRoutes);
+app.use('/bookings', bookingRoutes);
 
 //stripe payment route
 app.post("/create-payment-intent", async (req, res) => {
